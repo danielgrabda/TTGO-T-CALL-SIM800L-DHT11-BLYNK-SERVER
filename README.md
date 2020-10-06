@@ -47,7 +47,7 @@ void setup()
   Serial.println("Modem Starting");
   modem.init();
 
-    Blynk.begin(auth, modem, apn, user, pass, "blynk-cloud.com", 8080);
+  Blynk.begin(auth, modem, apn, user, pass, "blynk-cloud.com", 8080);
 }
 
 void loop()
@@ -57,10 +57,10 @@ void loop()
           float h = dht.readHumidity();
           float t = dht.readTemperature();
 
-            if (isnan(h) || isnan(t)) {
-              Serial.println("DHT stats not found, are you sure you've selected the correct pin?");
-              return;        
-            }
+   if (isnan(h) || isnan(t)) {
+    Serial.println("DHT stats not found, are you sure you've selected the correct pin?");
+      return;        
+      }
             else{
               float finaldata = dht.computeHeatIndex(t, h, false);
                   Blynk.virtualWrite(V1,t);
